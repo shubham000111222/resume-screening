@@ -1,27 +1,23 @@
 # ── Core NLP ──────────────────────────────────────────────────────────────────
 nltk==3.9.1
 spacy==3.7.6
-en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
 
 # ── ML / Embeddings ───────────────────────────────────────────────────────────
 scikit-learn==1.5.2
 sentence-transformers==3.3.1
 numpy==1.26.4
-torch==2.4.1
 
 # ── PDF / DOCX extraction ─────────────────────────────────────────────────────
 pdfplumber==0.11.4
-PyMuPDF==1.24.14
 docx2txt==0.8
 
 # ── Data / Visualisation ──────────────────────────────────────────────────────
 pandas==2.2.3
 plotly==5.24.1
-matplotlib==3.9.3
 
 # ── Streamlit UI ──────────────────────────────────────────────────────────────
 streamlit==1.40.2
 
 # ── Utilities ─────────────────────────────────────────────────────────────────
-python-dotenv==1.0.1
 tqdm==4.67.1
