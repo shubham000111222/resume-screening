@@ -7,9 +7,13 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
+import nltk
+for _p in ("punkt", "wordnet", "stopwords", "averaged_perceptron_tagger", "punkt_tab"):
+    nltk.download(_p, quiet=True)
+
 from src.extractor       import extract_text
 from src.preprocessor    import preprocess
-from src.embeddings      import build_tfidf, tfidf_embed, bert_embed
+from src.embeddings      import build_tfidf, tfidf_embed
 from src.similarity      import cosine_scores, rank_candidates
 from src.skill_extractor import extract_skills, skill_overlap
 from src.evaluator       import (
@@ -19,6 +23,35 @@ from src.evaluator       import (
     plot_skill_heatmap,
     plot_composite_bar,
 )
+
+@st.cache_resource(show_spinner="Loading BERT model (first run only)...")
+def load_bert_model():
+    from sentence_transformers import SentenceTransformer
+    from sklearn.preprocessing import normalize
+    import numpy as np
+    model = SentenceTransformer("all-MiniLM-L6-v2")
+    return model
+
+@st.cache_resource(show_spinner="Loading spaCy model...")
+def load_spacy_model():
+    import spacy
+    try:
+        return spacy.load("en_core_web_sm")
+    except OSError:
+        import subprocess, sys
+        subprocess.run([sys.executable, "-m", "spacy", "download", "en_core_web_sm"], check=True)
+        return spacy.load("en_core_web_sm")
+
+def bert_embed(texts, show_progress=False):
+    from sklearn.preprocessing import normalize
+    import numpy as np
+    model = load_bert_model()
+    emb = model.encode(texts, show_progress_bar=show_progress, convert_to_numpy=True)
+    return normalize(emb.astype(np.float32))
+
+# Pre-load models on startup
+load_bert_model()
+load_spacy_model()
 
 # ─── Page Config ──────────────────────────────────────────────────────────────
 st.set_page_config(
