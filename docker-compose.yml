@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  resume-screening:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: resume-screening:latest
+    container_name: resume-screening-app
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data         # mount local data folder
+      - model_cache:/root/.cache # persist HuggingFace model cache
+    environment:
+      - PYTHONUNBUFFERED=1
+      - TRANSFORMERS_CACHE=/root/.cache/huggingface
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  model_cache:

@@ -1,0 +1,32 @@
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Data (large files)
+data/resumes/
+data/raw/
+*.pdf
+*.docx
+
+# Models / cache
+models/
+.cache/
+*.pkl
+*.joblib
+
+# Streamlit
+.streamlit/secrets.toml
+
+# OS
+.DS_Store
+Thumbs.db
