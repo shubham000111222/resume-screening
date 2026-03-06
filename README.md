@@ -3,9 +3,8 @@ title: ResumeRank AI
 emoji: 🎯
 colorFrom: indigo
 colorTo: purple
-sdk: streamlit
-sdk_version: 1.40.2
-app_file: streamlit_app.py
+sdk: docker
+app_port: 8501
 pinned: false
 ---
 
