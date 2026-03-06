@@ -1,3 +1,7 @@
+# ── Torch CPU-only (keeps install small on Streamlit Cloud) ──────────────────
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.2.2+cpu
+
 # ── Core NLP ──────────────────────────────────────────────────────────────────
 nltk==3.9.1
 spacy==3.7.6

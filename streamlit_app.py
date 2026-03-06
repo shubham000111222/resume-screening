@@ -8,6 +8,13 @@ import pandas as pd
 import streamlit as st
 
 import nltk
+import ssl
+try:
+    _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
+else:
+    ssl._create_default_https_context = _create_unverified_https_context
 for _p in ("punkt", "wordnet", "stopwords", "averaged_perceptron_tagger", "punkt_tab"):
     nltk.download(_p, quiet=True)
 
