@@ -49,17 +49,17 @@ def bert_embed(texts, show_progress=False):
     emb = model.encode(texts, show_progress_bar=show_progress, convert_to_numpy=True)
     return normalize(emb.astype(np.float32))
 
-# Pre-load models on startup
-load_bert_model()
-load_spacy_model()
-
-# ─── Page Config ──────────────────────────────────────────────────────────────
+# ─── Page Config — must be the FIRST Streamlit call ───────────────────────────
 st.set_page_config(
     page_title="ResumeRank AI",
     page_icon="🎯",
     layout="wide",
     initial_sidebar_state="expanded",
 )
+
+# Pre-load models on startup (after set_page_config)
+load_bert_model()
+load_spacy_model()
 
 st.markdown("""
 <style>
