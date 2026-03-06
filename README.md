@@ -1,3 +1,14 @@
+---
+title: ResumeRank AI
+emoji: 🎯
+colorFrom: indigo
+colorTo: purple
+sdk: streamlit
+sdk_version: 1.40.2
+app_file: streamlit_app.py
+pinned: false
+---
+
 # 🎯 ResumeRank AI — Resume Screening & Candidate Ranking System
 
 > **NLP-powered resume screening** that ranks candidates against a job description using TF-IDF + BERT embeddings, skill extraction, and cosine similarity.
