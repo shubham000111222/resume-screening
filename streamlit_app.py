@@ -57,10 +57,6 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Pre-load models on startup (after set_page_config)
-load_bert_model()
-load_spacy_model()
-
 st.markdown("""
 <style>
 .metric-card {
